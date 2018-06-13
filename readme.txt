@@ -9,3 +9,6 @@ and translate it into a guitar tab (or potentially sheet music).
 
     GitHub & Pycharm Up and running
     -M
+
+    Finished for the day
+    -T
