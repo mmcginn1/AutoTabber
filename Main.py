@@ -1,6 +1,6 @@
 import numpy
 import scipy
 
-#Project Created
-
+def main():
+    print("This is a test")
 
