@@ -1,6 +1,6 @@
+from scipy.io import wavfile
 import numpy
-import scipy
-
 #Project Created
-
-
+fs, data = wavfile.read('note.wav')
+#otp = numpy.fft(data)
+#print(otp)
