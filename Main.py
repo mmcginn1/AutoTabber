@@ -1,11 +1,12 @@
-from scipy.io import wavfile
-import numpy
+from readWav import readWavFile
+from fft import fft
 
-#Project Created
+#driver function
+def main():
+    filename = input("Input filename: ")
+    data = readWavFile(filename)
+    freqData = fft(data)
+    for x in range(0, 100):
+        print(freqData[x])
 
-fs, data = wavfile.read('note.wav')
-otp = numpy.fft.fft(data)
-print(otp)
-
-#def main():
-#    print("This is a test")
+main()
