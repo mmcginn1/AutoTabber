@@ -1,12 +1,9 @@
 from scipy.io import wavfile
 from fft import fft
 from matplotlib import pyplot as plt
-<<<<<<< HEAD
-import numpy
-=======
 #from scipy.signal import argrelmax
 import numpy as np
->>>>>>> 789fdb208991cf22542085bbea2eef597e8ddd91
+from NoteIdentifier import findnote
 
 #Project Created
 fs, data = wavfile.read('note.wav')
@@ -20,12 +17,13 @@ freqs = np.fft.fftfreq(len(e))
 
 freqlookup = dict(zip(e,freqs))
 
-plt.plot(e, 'r')
-plt.show()
+#plt.plot(e, 'r')
+#plt.show()
 max = e.argmax()
-print(freqlookup.get(e.max())*fs)
-print(max)
-print(e.max())
+while True:
+    freq = input("Input a frequency: ");
+#print(findnote(freqlookup.get(e.max())*fs))
+    print(findnote(freq))
 
 
 #def main():

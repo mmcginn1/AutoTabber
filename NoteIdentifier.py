@@ -1,7 +1,8 @@
 
 
-def main(freq):
+def findnote(freq):
 
+    FQ = float(freq)
     # Consider putting this in a different function that doesn't initialize the dict every time you call it. It's fine for now
     # but for optimization, just initialize these values at start up
     BaseNotes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
@@ -20,14 +21,20 @@ def main(freq):
 
     Ref = dict(zip(Freqs, Notes))
     note = ""
-    threshold = 2.5/100
-    for x in Freqs:
-            if x * (1-threshold) < freq < x * (1+threshold):
-                note = Ref.get(x)
+    threshold = 7/100
+    LOW = 9999999999999999
+    for x in range(0, len(Freqs)):
+        if x < len(Freqs) - 1:
+            low = abs(Freqs[x] - FQ)
+            high = abs(Freqs[x + 1] - FQ)
+            if min(low, high) < LOW:
+                LOW = min(low,high)
+            if low == LOW:
+                note = Ref.get(Freqs[x])
+            elif high == LOW:
+                note = Ref.get(Freqs[x + 1])
 
-    print(note)
     return note
 
 
 
-main(100)
