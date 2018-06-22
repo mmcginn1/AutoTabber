@@ -20,14 +20,18 @@ def main(freq):
 
     Ref = dict(zip(Freqs, Notes))
     note = ""
-    threshold = 2.5/100
-    for x in Freqs:
-            if x * (1-threshold) < freq < x * (1+threshold):
-                note = Ref.get(x)
+    for x in range(0, len(Freqs)):
+        if x < len(Freqs)-1:
 
-    print(note)
+            low = abs(Freqs[x] - FQ)
+            high = abs(Freqs[x+1] - FQ)
+            if low == min(low,high):
+                note = Ref.get(Freqs[x])
+            elif high == min(low,high):
+                note = Ref.get(Freqs[x+1])
+
     return note
 
 
 
-main(100)
+main(6843)
