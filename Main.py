@@ -7,9 +7,9 @@ from NoteIdentifier import findnote
 import threading
 
 #Project Created
-fs, data = wavfile.read('note.wav')
+fs, data = wavfile.read('Note3.wav')
 lst = list()
-bufferlength = 2**12
+bufferlength = 2**14
 for i in range(int(len(data)/bufferlength)):
     lst.append(data[bufferlength*i:bufferlength*(i+1)])
 
