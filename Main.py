@@ -8,12 +8,13 @@ from math import log2
 
 #Project Created
 fs, data = wavfile.read('Note3.wav')                                    #reading file
-for i in range(int((2**(log2(len(data) + 1)) - len(data))/2)):
-    data.append(0)                                                      #zero padding at start and end of data
-    data.insert(0, 0)
+
 print(data)
 lst = list()
 bufferlength = 2**14                                                    #buffer to find freq changes
+
+
+
 for i in range(int(len(data)/bufferlength)):
     lst.append(data[bufferlength*i:bufferlength*(i+1)])
 
@@ -23,6 +24,9 @@ e = list()
 for x in lst:
     a = x.T[0]                                          # this is a two channel soundtrack, I get the first track
     b = [(ele/2**8.)*2-1 for ele in a]                  # this is 8-bit track, b is now normalized on [-1,1)
+    for i in range(int((2 ** (log2(len(data) + 1)) - len(data)) / 2)):
+        b.append(0)  # zero padding at start and end of data
+        b.insert(0, 0)
     otp = fft(b)                                        # calculate fourier transform (complex numbers list)
     d = int(len(otp)/2)                                 # you only need half of the fft list (real signal symmetry)
     e.append(abs(otp[:d]))
